@@ -1,0 +1,56 @@
+{% extends "base.html"%}
+{% block content %}
+    
+    <main class="conteudo">
+        <nav class="trilha"><a href="{%url 'jogos:index'%}">Equipes</a> / Futsal</nav>
+
+        <header class="topo">
+            <span class="sobretitulo">Modalidade</span>
+            <h1>{{modalidade.nome}}</h1>
+        </header>
+
+        <dl class="numeros">
+            <div>
+                <dt>Tipo</dt>
+                <dd>{{modalidade.tipo}}</dd>
+            </div>
+            <div>
+                <dt>Máximo por equipe</dt>
+                <dd>{{modalidade.max_atletas}}</dd>
+            </div>
+            <div>
+                <dt>Atletas inscritos</dt>
+                <dd>3</dd>
+            </div>
+        </dl>
+
+        <h2>Atletas inscritos</h2>
+        <div class="tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Equipe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bruno Henrique Costa</td>
+                        <td><a href="equipe.html">Fênix</a></td>
+                    </tr>
+                    <tr>
+                        <td>Davi Lucas Oliveira</td>
+                        <td><a href="equipe.html">Fênix</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pedro Henrique Alves</td>
+                        <td><a href="equipe.html">Tubarões</a></td>
+                    </tr>
+                    {%if not atleta.modalidade%}
+                        <tr><td class="vazio" colspan="2">Nenhum atleta inscrito nesta modalidade.</td></tr>
+                    {%endif%}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{%endblock%}

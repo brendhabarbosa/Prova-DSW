@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{% block content %}
+     <main class="conteudo">
+        <nav class="trilha"><a href="{%url 'jogos:index'%}">Equipes</a></nav>
+
+        <header class="topo">
+            <span class="sobretitulo">Equipe</span>
+            <h1>{{equipe.nome}}</h1>
+            <p class="descricao">{{equipe.descricao}}</p>
+        </header>
+            <h2>Técnico</h2>
+            <dl class="numeros ficha">
+                <div>
+                    <dt>Nome</dt>
+                    <dd>{{tecnico.nome}}</dd>
+                </div>
+                <div>
+                    <dt>E-mail</dt>
+                    <dd>{{tecnico.email}}</dd>
+                </div>
+                <div>
+                    <dt>Telefone</dt>
+                    <dd>{{tecnico.telefone}}</dd>
+                </div>
+            </dl>
+
+        {%if not equipe.tecnico%}
+            <p class="aviso">Esta equipe ainda não tem técnico cadastrado.</p>
+        {%endif%}
+
+        <h2>Atletas</h2>
+        <div class="tabela">
+                    {%for atleta in atletas %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Matrícula</th>
+                                    <th>Modalidades</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{atleta.nome}}</td>
+                                    <td>{{atleta.matricula}}</td>
+                                    <td>
+                                        <ul class="modalidades">
+                                            <li><a href="#">{{atleta.modalidade}}</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                    {%endfor%}
+                    {% if not equipe.atleta %}
+                        <tr><td class="vazio" colspan="3">Nenhum atleta inscrito.</td></tr>
+                    {%endif%}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{%endblock%}
